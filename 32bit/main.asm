@@ -4,7 +4,10 @@
 
     mov bx, MSG_REAL_MODE
     call print ; This will be written after the BIOS messages
-
+   
+    
+    xor ax, ax;
+    int 16h;
     call switch_to_pm
     jmp $ ; this will actually never be executed
 
@@ -12,6 +15,7 @@
 %include "gdt.asm"
 %include "print.asm"
 %include "switch.asm"
+
 
 [bits 32]
 BEGIN_PM: ; after the switch we will get here
